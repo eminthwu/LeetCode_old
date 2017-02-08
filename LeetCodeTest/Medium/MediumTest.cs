@@ -25,25 +25,25 @@ namespace LeetCodeTest
             Medium target = new Medium();
             var first = new ListNode(2)
             {
-                Next = new ListNode(4)
+                next = new ListNode(4)
                 {
-                    Next = new ListNode(3)
+                    next = new ListNode(3)
                 }
             };
 
             var second = new ListNode(5)
             {
-                Next = new ListNode(6)
+                next = new ListNode(6)
                 {
-                    Next = new ListNode(4)
+                    next = new ListNode(4)
                 }
             };
 
             var expected = new ListNode(7)
             {
-                Next = new ListNode(0)
+                next = new ListNode(0)
                 {
-                    Next = new ListNode(8)
+                    next = new ListNode(8)
                 }
             };
 

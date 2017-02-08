@@ -2,13 +2,13 @@
 {
     public class ListNode
     {
-        private int v;
+        public int val;
 
         public ListNode(int v)
         {
-            this.v = v;
+            this.val = v;
         }
 
-        public object Next { get; set; }
+        public ListNode next { get; set; }
     }
 }
