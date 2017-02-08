@@ -12,39 +12,58 @@ namespace LeetCode.Medium
             var l1 = new List<int>();
             var l2 = new List<int>();
             var index = first;
+            var carry = false;
+            var result = new List<string>();
 
-            while (first != null)
+            while (first != null || second != null || carry)
             {
-                l1.Add(first.val);               
-                first = first.next;               
+                if (first != null && second != null)
+                {
+                    var val = first.val + second.val + (carry ? 1 : 0);
+                    var value = (val % 10).ToString();
+                    result.Add(value);
+                    carry = val >= 10;
+                    first = first.next;
+                    second = second.next;
+                }
+                else if(first == null && second != null)
+                {
+                    var val = second.val + (carry ? 1 : 0);
+                    var value = (val % 10).ToString();
+                    result.Add(value);
+                    carry = val >= 10;
+                    second = second.next;
+                }
+                else if (second == null && first != null)
+                {
+                    var val = first.val + (carry ? 1 : 0);
+                    var value = (val % 10).ToString();
+                    result.Add(value);
+                    carry = val >= 10;
+                    first = first.next;
+                }     
+                else if (carry)
+                {
+                    result.Add("1");
+                    carry = false;
+                }           
             }
 
-            while (second != null)
-            {                
-                l2.Add(second.val);               
-                second = second.next;
-            }
-
-            l1.Reverse();
-            l2.Reverse();
-
-            var a = Convert.ToInt64(string.Join<int>("", l1));
-            var b = Convert.ToInt64(string.Join<int>("", l2));
-
-            var c = (a + b).ToString().ToCharArray().ToList();
-            c.Reverse();
+            //result.Reverse();
 
             ListNode output = null;
+            var i = 0;
 
-            for (int i = 0; i < c.Count; i++)
+            foreach (var r in result)
             {
-                // var val = (l1[i] + l2[i]) % 10;
-                var val = Convert.ToInt32(c[i].ToString());
+                var val = Convert.ToInt32(r);
 
                 if (i == 0)
                     output = new ListNode(val);
                 else
                     TraceLastNode(output).next = new ListNode(val);
+
+                i++;
             }
 
             return output;
