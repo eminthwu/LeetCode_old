@@ -7,6 +7,8 @@ namespace LeetCode.Medium
 {
     public class Medium
     {
+        #region AddTwoNumber        
+
         public ListNode AddTwoNumber(ListNode first, ListNode second)
         {
             var l1 = new List<int>();
@@ -76,5 +78,9 @@ namespace LeetCode.Medium
             else
                 return TraceLastNode(node.next);
         }
+
+        #endregion
+
+
     }
 }
