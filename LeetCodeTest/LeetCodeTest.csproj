@@ -57,12 +57,11 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Easy\EasyTest.cs" />
+    <Compile Include="Hard\HardTest.cs" />
     <Compile Include="Medium\MediumTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Hard\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\LeetCode\LeetCode.csproj">
       <Project>{556299db-3353-4cde-9bae-943eb888d6e5}</Project>
