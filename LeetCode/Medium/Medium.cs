@@ -28,7 +28,7 @@ namespace LeetCode.Medium
                     first = first.next;
                     second = second.next;
                 }
-                else if(first == null && second != null)
+                else if (first == null && second != null)
                 {
                     var val = second.val + (carry ? 1 : 0);
                     var value = (val % 10).ToString();
@@ -43,12 +43,12 @@ namespace LeetCode.Medium
                     result.Add(value);
                     carry = val >= 10;
                     first = first.next;
-                }     
+                }
                 else if (carry)
                 {
                     result.Add("1");
                     carry = false;
-                }           
+                }
             }
 
             //result.Reverse();
@@ -77,6 +77,26 @@ namespace LeetCode.Medium
                 return node;
             else
                 return TraceLastNode(node.next);
+        }
+
+        public string LongestPalindrome(string input)
+        {
+            var result = "";
+
+            for (int i = 0; i < input.Length; i++)
+            {
+                for (int j = i; j < input.Length; j++)
+                {
+                    var temp = input.Skip(i).Take(j + 1);
+                    var x = new string(temp.ToArray());
+                    if (x == new string(temp.Reverse().ToArray()) && x.Length >= result.Length)
+                    {
+                        result = x;
+                    }
+                }
+            }
+
+            return result;
         }
 
         #endregion
