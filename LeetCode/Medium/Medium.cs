@@ -91,10 +91,7 @@ namespace LeetCode.Medium
                 {
                     var temp = input.Skip(i).Take(j + 1 - i);
                     var x = new string(temp.ToArray());
-                    if (i == 16)
-                    {
-
-                    }
+                   
                     if (x == new string(temp.Reverse().ToArray()) && x.Length >= result.Length)
                     {
                         result = x;
