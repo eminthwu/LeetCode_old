@@ -81,27 +81,53 @@ namespace LeetCode.Medium
 
         #endregion
 
-        public string LongestPalindrome(string input)
+
+        public string LongestPalindrome(string s)
+        {
+            /*回文可以想成，找出中間的那個字元，接著左右兩邊對稱*/
+            int begin = 0, end = 0;
+
+            string result = "";
+
+            for (int i = 0; i < s.Length;)
+            {
+                var odd = t(s, begin, end);
+                var even = t(s, begin, end + 1);
+
+                var max = odd.Length > even.Length ? odd : even;
+                result = result.Length >= max.Length ? result : max;                
+
+                begin = end = ++i;
+            }
+
+            return result;
+
+        }
+
+        public string t(string s, int begin, int end)
         {
             var result = "";
 
-            for (int i = 0; i < input.Length; i++)
+            while (begin >= 0 && end < s.Length)
             {
-                for (int j = i; j < input.Length; j++)
+                if (s[begin] == s[end])
                 {
-                    var temp = input.Skip(i).Take(j + 1 - i);
-                    var x = new string(temp.ToArray());
-                   
-                    if (x == new string(temp.Reverse().ToArray()) && x.Length >= result.Length)
-                    {
-                        result = x;
-                    }
+                    var temp = s.Substring(begin, end - begin + 1);
+                    //result = end - begin + 1;
+                    result = temp.Length > result.Length ? temp : result;
+                    begin--;
+                    end++;
+                }
+                else
+                {
+                    break;
                 }
             }
 
             return result;
         }
 
-        
     }
 }
+
+
