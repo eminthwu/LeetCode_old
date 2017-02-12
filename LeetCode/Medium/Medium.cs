@@ -79,6 +79,8 @@ namespace LeetCode.Medium
                 return TraceLastNode(node.next);
         }
 
+        #endregion
+
         public string LongestPalindrome(string input)
         {
             var result = "";
@@ -103,8 +105,6 @@ namespace LeetCode.Medium
             return result;
         }
 
-        #endregion
-
-
+        
     }
 }
