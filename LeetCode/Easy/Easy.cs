@@ -48,5 +48,10 @@ namespace LeetCode.Easy
 
             return output;
         }
+
+        public bool IsPalindrome(int x)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

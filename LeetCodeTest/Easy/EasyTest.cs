@@ -46,5 +46,20 @@ namespace LeetCodeTest
             //assert
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void IsPalindrome()
+        {
+            //arrange
+            var x = 12321;
+            var expected = true;
+            var target = new Easy();         
+
+            //Act
+            bool actual = target.IsPalindrome(x);
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
