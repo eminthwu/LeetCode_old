@@ -51,8 +51,8 @@ namespace LeetCodeTest
         public void IsPalindrome()
         {
             //arrange
-            var x = 12321;
-            var expected = true;
+            var x = 10;
+            var expected = false;
             var target = new Easy();         
 
             //Act

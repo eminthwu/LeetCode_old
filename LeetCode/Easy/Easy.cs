@@ -41,7 +41,7 @@ namespace LeetCode.Easy
                     output = Convert.ToInt32(result);
                 }
             }
-            catch(OverflowException e)
+            catch (OverflowException e)
             {
                 return 0;
             }
@@ -51,7 +51,35 @@ namespace LeetCode.Easy
 
         public bool IsPalindrome(int x)
         {
-            throw new NotImplementedException();
-        }
+            Func<string, int, int, bool> checkPalindrome = (string s, int begin, int end) =>
+            {
+                while (begin >= 0 && end < s.Length)
+                {
+                    if (s[begin] == s[end])
+                    {
+                        begin--;
+                        end++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                return begin == -1 && end == s.Length;
+            };
+
+
+            if (x == 0)
+                return true;
+            else if (x == int.MaxValue || x < 0)
+                return false;
+
+            int digits = (int)Math.Floor(Math.Log10(x) + 1);
+            var mid = digits / 2;
+            var minusOne = digits % 2 == 0 ? 1 : 0;            
+
+            return checkPalindrome(x.ToString(), mid - minusOne, mid);
+        }        
     }
 }
