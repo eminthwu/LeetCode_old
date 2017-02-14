@@ -25,18 +25,28 @@ namespace LeetCode.Easy
 
         public int ReverseInt(int x)
         {
+            long tail = 0;
+            long result = 0;
+            int output = 0;
+
+            //int y = int.MaxValue + 1;
+
             try
             {
-                var str = Math.Abs(x).ToString();
-                var x1 = str.Reverse();
-                var result = Convert.ToInt32(new string(x1.ToArray()));
-
-                return x > 0 ? result : result * -1;
+                while (x != 0)
+                {
+                    tail = x % 10;
+                    result = result * 10 + tail;
+                    x = x / 10;
+                    output = Convert.ToInt32(result);
+                }
             }
             catch(OverflowException e)
             {
                 return 0;
             }
+
+            return output;
         }
     }
 }

@@ -37,7 +37,7 @@ namespace LeetCodeTest
         {
             //arrange
             var x = 1534236469;
-            var expected = 9646324351;
+            var expected = 0;
             var target = new Easy();
 
             //Act
