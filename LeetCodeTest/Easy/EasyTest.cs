@@ -36,15 +36,15 @@ namespace LeetCodeTest
         public void ReverseInt()
         {
             //arrange
-            var x = 123;
-            var expected = 321;
+            var x = 1534236469;
+            var expected = 9646324351;
             var target = new Easy();
 
             //Act
             int actual = target.ReverseInt(x);
 
             //assert
-            Assert.AreEqual(expected, target);
+            Assert.AreEqual(expected, actual);
         }
     }
 }
