@@ -21,5 +21,10 @@ namespace LeetCode.Easy
 
             return output;
         }
+
+        public int ReverseInt(int x)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

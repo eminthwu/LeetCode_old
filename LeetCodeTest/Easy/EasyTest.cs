@@ -31,5 +31,20 @@ namespace LeetCodeTest
             //Assert
             CollectionAssert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void ReverseInt()
+        {
+            //arrange
+            var x = 123;
+            var expected = 321;
+            var target = new Easy();
+
+            //Act
+            int actual = target.ReverseInt(x);
+
+            //assert
+            Assert.AreEqual(expected, target);
+        }
     }
 }
