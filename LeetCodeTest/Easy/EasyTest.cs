@@ -61,5 +61,20 @@ namespace LeetCodeTest
             //assert
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void RomanToInt()
+        {
+            //arrange
+            var s = "DCXXI";
+            var expected = 621;
+            var target = new Easy();
+
+            //act 
+            int actual  =target.RomanToInt(s);
+
+            Assert.AreEqual(expected, actual);
+
+        }
     }
 }

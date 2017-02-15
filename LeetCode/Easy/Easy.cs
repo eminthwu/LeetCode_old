@@ -80,6 +80,11 @@ namespace LeetCode.Easy
             var minusOne = digits % 2 == 0 ? 1 : 0;            
 
             return checkPalindrome(x.ToString(), mid - minusOne, mid);
-        }        
+        }
+
+        public int RomanToInt(string s)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
