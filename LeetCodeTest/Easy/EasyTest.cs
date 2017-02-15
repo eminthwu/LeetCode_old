@@ -66,8 +66,8 @@ namespace LeetCodeTest
         public void RomanToInt()
         {
             //arrange
-            var s = "DCXXI";
-            var expected = 621;
+            var s = "MDCCCLXXXIV";
+            var expected = 1884;
             var target = new Easy();
 
             //act 
