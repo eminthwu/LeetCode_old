@@ -15,5 +15,10 @@ namespace LeetCodeTest
 
             return 0;
         }
+
+        public bool RegularExpressionMatching(string s, string p)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -39,5 +39,22 @@ namespace LeetCodeTest
             Assert.AreEqual(expected, actual);
 
         }
+
+        [TestMethod]
+        public void RegularExpressionMatching()
+        {
+            //arrange 
+            var s = "aa";
+            var p = "a*";
+            var expected = true;
+
+            var target = new Hard();
+
+            //act 
+            bool actual = target.RegularExpressionMatching(s, p);
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
