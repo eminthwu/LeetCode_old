@@ -5,6 +5,7 @@ using LeetCode.Definition;
 using ExpectedObjects;
 using System.Collections.Generic;
 using ExpectedObjects;
+using System.Linq;
 
 namespace LeetCodeTest
 {
@@ -119,13 +120,22 @@ namespace LeetCodeTest
         {
             //arrange
             int[] nums = new int[] { -1, 0, 1, 2, -1, -4 };
-            var expected = new List<List<int>>() { new List<int>() { -1, -1, 2 }, new List<int>() { -1, 0, 1 } };
+            nums = new int[] { 0, 0, 0 };
+            var expected = new List<IList<int>>() { new List<int>() { -1, -1, 2 }, new List<int>() { -1, 0, 1 } }.ToList();
             var target = new Medium();
 
             //act 
-            IList<IList<int>> actual = target.ThreeSum(nums);
+            var actual = target.ThreeSum(nums).ToList();
 
-            expected.ToExpectedObject().ShouldEqual(actual);
+            var z = new List<int>() { 1, 2, 3 };
+            var x = new List<int>() { 1, 2, 3 };
+
+            var zz = new List<List<int>>() { new List<int>() { 1, 2, 3 } };
+            var xx = new List<List<int>>() { new List<int>() { 1, 2, 3 } };
+
+            CollectionAssert.AreEqual(zz, xx);
+
+            //expected.ToExpectedObject().ShouldEqual(actual);
         }
     }
 }

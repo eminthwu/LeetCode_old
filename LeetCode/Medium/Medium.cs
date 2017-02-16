@@ -95,7 +95,7 @@ namespace LeetCode.Medium
                 var even = t(s, begin, end + 1);
 
                 var max = odd.Length > even.Length ? odd : even;
-                result = result.Length >= max.Length ? result : max;                
+                result = result.Length >= max.Length ? result : max;
 
                 begin = end = ++i;
             }
@@ -127,9 +127,58 @@ namespace LeetCode.Medium
             return result;
         }
 
-        public IList<IList<int>> ThreeSum(int[] nums)
+        public IEnumerable<IEnumerable<int>> ThreeSum(int[] nums)
         {
-            throw new NotImplementedException();
+            //var output = new Dictionary<int, IList<int>>();
+            var output = new List<IList<int>>();
+            var zeros = nums.Where(x => x == 0).Count();
+            var n = nums.Where(x => x != 0).ToList();
+
+            if (zeros > 0 && zeros / 3 > 0)
+            {
+                output.Add(new List<int>() { 0, 0, 0 });
+            }
+
+            for (int i = 0; i < zeros % 3; i++)
+            {
+                n.Add(0);
+            }
+
+            for (int i = n.Count - 1; i >= 0; i--)
+            {
+                var num = n[i];
+                var m = n.ToList();
+                m.RemoveRange(i, n.Count - i);
+
+                for (int j = m.Count - 1; j >= 0; j--)
+                {
+                    var k = m.ToList();
+                    k.RemoveRange(j, m.Count - j);
+
+                    var r = 0 - (num + m[j]);
+                    if (k.Contains(r))
+                    {
+                        var l = new List<int>() { num, m[j], r }.OrderBy(x => x).ToList();
+
+                        output.Add(l);
+                        break;
+                    }
+                }
+            }
+
+            var g = (from v in output
+                    group v by new List<IList<int>> { v } into temp
+                    select new
+                    {
+                        c = temp.Key
+                    }).FirstOrDefault();
+
+            output = g == null ? output : g.c;
+
+
+            //output = output.Distinct().ToList();
+
+            return output;
         }
     }
 }
