@@ -3,6 +3,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LeetCode.Medium;
 using LeetCode.Definition;
 using ExpectedObjects;
+using System.Collections.Generic;
+using ExpectedObjects;
 
 namespace LeetCodeTest
 {
@@ -70,19 +72,19 @@ namespace LeetCodeTest
             Medium target = new Medium();
             var first = new ListNode(5)
             {
-                
+
             };
 
             var second = new ListNode(5)
             {
-                
+
             };
 
             var expected = new ListNode(0)
             {
                 next = new ListNode(1)
                 {
-                    
+
                 }
             };
 
@@ -110,6 +112,20 @@ namespace LeetCodeTest
             //assert
             Assert.AreEqual(expected, actual);
 
+        }
+
+        [TestMethod]
+        public void ThreeSum()
+        {
+            //arrange
+            int[] nums = new int[] { -1, 0, 1, 2, -1, -4 };
+            var expected = new List<List<int>>() { new List<int>() { -1, -1, 2 }, new List<int>() { -1, 0, 1 } };
+            var target = new Medium();
+
+            //act 
+            IList<IList<int>> actual = target.ThreeSum(nums);
+
+            expected.ToExpectedObject().ShouldEqual(actual);
         }
     }
 }

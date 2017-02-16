@@ -127,6 +127,10 @@ namespace LeetCode.Medium
             return result;
         }
 
+        public IList<IList<int>> ThreeSum(int[] nums)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
