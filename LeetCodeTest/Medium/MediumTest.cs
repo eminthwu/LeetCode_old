@@ -4,7 +4,6 @@ using LeetCode.Medium;
 using LeetCode.Definition;
 using ExpectedObjects;
 using System.Collections.Generic;
-using ExpectedObjects;
 using System.Linq;
 
 namespace LeetCodeTest
@@ -119,23 +118,25 @@ namespace LeetCodeTest
         public void ThreeSum()
         {
             //arrange
-            int[] nums = new int[] { -1, 0, 1, 2, -1, -4 };
-            nums = new int[] { 0, 0, 0 };
-            var expected = new List<IList<int>>() { new List<int>() { -1, -1, 2 }, new List<int>() { -1, 0, 1 } }.ToList();
+            int[] nums = new int[] { 2, 2, -1, -3, 3, 1, -2, 1, -2, 3, 0, -5, 0, 4, -3, 3};
+            //nums = new int[] { 0, 0, 0 };
+            var expected = new List<IList<int>>() { new List<int>() { -1, 0, 1 } , new List<int>() { -1, -1, 2 } }.ToList();
             var target = new Medium();
 
             //act 
             var actual = target.ThreeSum(nums).ToList();
 
-            var z = new List<int>() { 1, 2, 3 };
-            var x = new List<int>() { 1, 2, 3 };
-
-            var zz = new List<List<int>>() { new List<int>() { 1, 2, 3 } };
-            var xx = new List<List<int>>() { new List<int>() { 1, 2, 3 } };
-
-            CollectionAssert.AreEqual(zz, xx);
-
-            //expected.ToExpectedObject().ShouldEqual(actual);
+            if (expected.Count != actual.Count)
+            {
+                Assert.Fail("The elements between expected and actual are not equal");
+            }
+            else
+            {
+                for (int i = 0; i < expected.Count; i++)
+                {
+                    CollectionAssert.AreEqual(expected[i].ToList(), actual[i].ToList());
+                }
+            }
         }
     }
 }

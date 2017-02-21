@@ -128,9 +128,9 @@ namespace LeetCode.Medium
         }
 
         public IEnumerable<IEnumerable<int>> ThreeSum(int[] nums)
-        {
-            //var output = new Dictionary<int, IList<int>>();
+        {           
             var output = new List<IList<int>>();
+            List<IList<int>> result = null;
             var zeros = nums.Where(x => x == 0).Count();
             var n = nums.Where(x => x != 0).ToList();
 
@@ -139,44 +139,71 @@ namespace LeetCode.Medium
                 output.Add(new List<int>() { 0, 0, 0 });
             }
 
-            for (int i = 0; i < zeros % 3; i++)
+            if (zeros > 0)
             {
-                n.Add(0);
+                for (int i = 0; i < n.Count; i++)
+                {
+                    var num = n[i];
+                    if (nums.Contains(num * -1))
+                    {
+                        output.Add(new List<int>() { num, num * -1, 0 }.OrderBy(x => x).ToList());
+                    }
+                }
             }
 
             for (int i = n.Count - 1; i >= 0; i--)
             {
                 var num = n[i];
+                var count = n.Where(x => x == num).Count();
                 var m = n.ToList();
-                m.RemoveRange(i, n.Count - i);
+                var skip = new List<int>();
+                m.RemoveRange(i, 1);  
+
+                if(num == 1)
+                {
+
+                }
 
                 for (int j = m.Count - 1; j >= 0; j--)
                 {
                     var k = m.ToList();
-                    k.RemoveRange(j, m.Count - j);
+                    k.RemoveRange(j, 1);                    
+
+                    if (skip.Contains(m[j]))
+                        continue;
 
                     var r = 0 - (num + m[j]);
                     if (k.Contains(r))
                     {
                         var l = new List<int>() { num, m[j], r }.OrderBy(x => x).ToList();
-
                         output.Add(l);
-                        break;
+                        skip.Add(r);
+                        count--;
+
+                        if(count == 0)
+                            break;
                     }
                 }
             }
 
-            var g = (from v in output
-                    group v by new List<IList<int>> { v } into temp
-                    select new
+            var g = from v in output
+                    group v by new { V0 = v[0], V1 = v[1], V2 = v[2] } into temp
+                    select new List<int>()
                     {
-                        c = temp.Key
-                    }).FirstOrDefault();
-
-            output = g == null ? output : g.c;
+                        temp.Key.V0,temp.Key.V1,temp.Key.V2
+                    };
 
 
-            //output = output.Distinct().ToList();
+            if (g != null)
+            {
+                result = new List<IList<int>>();
+                foreach (var go in g)
+                {
+                    result.Add(go);
+                }
+
+                output = result;
+            }           
 
             return output;
         }
