@@ -127,6 +127,10 @@ namespace LeetCode.Medium
             return result;
         }
 
+        public int ThreeSumClosest(int[] nums, int target)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

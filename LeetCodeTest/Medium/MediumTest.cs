@@ -111,5 +111,22 @@ namespace LeetCodeTest
             Assert.AreEqual(expected, actual);
 
         }
+
+        [TestMethod]
+        public void ThreeSumClosest()
+        {
+            //arrange
+            var nums = new int[] { 0, 0, 0 };
+            var target = 1;
+            var expected = 0;
+            var targetObject = new Medium();
+
+            //act
+            int actual = targetObject.ThreeSumClosest(nums, target);
+
+            //assert
+            Assert.AreEqual(expected, actual);
+
+        }
     }
 }
