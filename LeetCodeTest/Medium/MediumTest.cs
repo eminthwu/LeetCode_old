@@ -116,9 +116,9 @@ namespace LeetCodeTest
         public void ThreeSumClosest()
         {
             //arrange
-            var nums = new int[] { 0, 0, 0 };
+            var nums = new int[] { 1, 2, 1,-4 };
             var target = 1;
-            var expected = 0;
+            var expected = 2;
             var targetObject = new Medium();
 
             //act

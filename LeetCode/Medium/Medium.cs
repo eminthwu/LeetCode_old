@@ -95,7 +95,7 @@ namespace LeetCode.Medium
                 var even = t(s, begin, end + 1);
 
                 var max = odd.Length > even.Length ? odd : even;
-                result = result.Length >= max.Length ? result : max;                
+                result = result.Length >= max.Length ? result : max;
 
                 begin = end = ++i;
             }
@@ -129,7 +129,48 @@ namespace LeetCode.Medium
 
         public int ThreeSumClosest(int[] nums, int target)
         {
-            throw new NotImplementedException();
+            Func<int[], int, Tuple<int, List<int>>> func = (ns, t) =>
+            {
+                ns = ns.OrderBy(x => x).ToArray();
+                var newNums = new List<int>();
+                var index = -1;
+
+                for (var i = 0; i < ns.Length; i++)
+                {
+                    var n = ns[i];
+
+                    if (t <= n && index < 0)
+                    {
+                        //newNums.Add(t);
+                        index = i;
+                    }
+
+                    newNums.Add(n);
+                }
+
+                if (index < 0)
+                {
+                    //newNums.Add(t);
+                    index = newNums.Count;
+                }
+
+                return Tuple.Create(index, newNums);
+            };
+
+            if (nums.Length == 3)
+            {
+                return nums.Sum(n => n);
+            }
+
+            var nums2 = func(nums, target);
+            var skip = 0;
+            for (int i = 0; i <= nums2.Item1 - 3 && i >= 0; i++)
+            {
+                skip = i;
+            }
+
+            var result = nums2.Item2.Skip(skip).Take(3).Sum(x => x);
+            return result;
         }
     }
 }
