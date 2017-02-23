@@ -61,5 +61,21 @@ namespace LeetCodeTest
             //assert
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void ValidParentheses()
+        {
+            //arrange
+            var target = new Easy();
+            var s = "(";
+            var expected = false;
+
+            //act
+            bool actual = target.ValidParentheses(s);
+
+            //assert
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
