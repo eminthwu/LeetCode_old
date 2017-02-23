@@ -67,7 +67,7 @@ namespace LeetCodeTest
         {
             //arrange
             var target = new Easy();
-            var s = "(";
+            var s = "((";
             var expected = false;
 
             //act

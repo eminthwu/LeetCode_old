@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace LeetCode.Easy
@@ -77,14 +78,41 @@ namespace LeetCode.Easy
 
             int digits = (int)Math.Floor(Math.Log10(x) + 1);
             var mid = digits / 2;
-            var minusOne = digits % 2 == 0 ? 1 : 0;            
+            var minusOne = digits % 2 == 0 ? 1 : 0;
 
             return checkPalindrome(x.ToString(), mid - minusOne, mid);
         }
 
         public bool ValidParentheses(string s)
         {
-            throw new NotImplementedException();
+            Dictionary<char, char> config = new Dictionary<char, char>()
+            {
+                {'(',')' },
+                {')','(' },
+                {'[',']' },
+                {']','[' },
+                {'{','}' },
+                {'}','{' }
+            };
+
+            if (s.Length % 2 == 1)
+                return false;
+
+            var right = s.Length / 2;
+            var left = right - 1;
+
+
+            do
+            {
+                if (config[s[left]] != s[right])
+                    return false;
+
+                left--;
+                right++;
+
+            } while (right < s.Length && left > 0);
+
+                return true;
         }
     }
 }
