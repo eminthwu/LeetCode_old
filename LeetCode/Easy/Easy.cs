@@ -115,5 +115,18 @@ namespace LeetCode.Easy
 
             return stack.Count == 0;
         }
+
+        public int Remove_Duplicates_from_Sorted_Array(int[] nums)
+        {
+            var lnums = nums.ToList();
+                 
+            for (int i = lnums.Length - 1; i >= 0; i--)
+            {
+                if(nums[i] == nums[i-1])
+                {
+                    nums.re
+                }
+            }
+        }
     }
 }

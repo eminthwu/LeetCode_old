@@ -78,5 +78,20 @@ namespace LeetCodeTest
 
             Assert.AreEqual(expected, actual);
         }
+
+        public void Remove_Duplicates_from_Sorted_Array()
+        {
+            //arrange
+            var nums = new int[] { 1, 1, 2 };
+            var expected = new int[] { 1, 2 };
+            var expectedLength = expected.Length;
+
+            //act 
+            var target = new Easy();
+            int actual = target.Remove_Duplicates_from_Sorted_Array(nums);
+
+            //assert
+            Assert.AreEqual(expectedLength, actual);
+        }
     }
 }
