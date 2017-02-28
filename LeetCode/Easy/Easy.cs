@@ -85,34 +85,35 @@ namespace LeetCode.Easy
 
         public bool ValidParentheses(string s)
         {
+            var stack = new List<char>();
             Dictionary<char, char> config = new Dictionary<char, char>()
             {
-                {'(',')' },
-                {')','(' },
-                {'[',']' },
-                {']','[' },
-                {'{','}' },
-                {'}','{' }
+                {'(',')' },{')','(' },
+                {'[',']' },{']','[' },
+                {'{','}' },{'}','{' }
             };
 
-            if (s.Length % 2 == 1)
-                return false;
-
-            var right = s.Length / 2;
-            var left = right - 1;
+            var left = new char[] { '{', '[', '(' };
+            var right = new char[] { '}', ']', ')' };
 
 
-            do
+            foreach (var c in s)
             {
-                if (config[s[left]] != s[right])
+                var index = stack.Count - 1;
+
+                if (left.Contains(c))
+                {
+                    stack.Add(c);
+                }
+                else if (index >= 0 && right.Contains(c) && config[c] == stack[index])
+                {
+                    stack.RemoveAt(index);
+                }
+                else
                     return false;
+            }
 
-                left--;
-                right++;
-
-            } while (right < s.Length && left > 0);
-
-                return true;
+            return stack.Count == 0;
         }
     }
 }
