@@ -85,7 +85,7 @@ namespace LeetCode.Easy
 
         public bool ValidParentheses(string s)
         {
-            var stack = new List<char>();
+            var stack = new Stack<char>();
             Dictionary<char, char> config = new Dictionary<char, char>()
             {
                 {'(',')' },{')','(' },
@@ -103,11 +103,11 @@ namespace LeetCode.Easy
 
                 if (left.Contains(c))
                 {
-                    stack.Add(c);
+                    stack.Push(c);
                 }
-                else if (index >= 0 && right.Contains(c) && config[c] == stack[index])
+                else if (index >= 0 && right.Contains(c) && config[c] == stack.Peek())
                 {
-                    stack.RemoveAt(index);
+                    stack.Pop();
                 }
                 else
                     return false;
@@ -115,5 +115,71 @@ namespace LeetCode.Easy
 
             return stack.Count == 0;
         }
+
+        public ListNode MergeTwoSortedLists(ListNode l1, ListNode l2)
+        {            
+            ListNode result = null;
+            ListNode temp = null;
+
+            if (l1 == null && l2 == null)
+                return null;
+            else if (l1 == null)
+                return l2;
+            else if (l2 == null)
+                return l1;
+            else if(l1.val <= l2.val)
+            {
+                result = new ListNode(l1.val);
+                temp = result;
+                l1 = l1.next;
+            }
+            else
+            {
+                result = new ListNode(l2.val);
+                temp = result;
+                l2 = l2.next;
+            }
+
+            do
+            {
+                if(l1==null)
+                {
+                    temp.next = l2;
+                    break;
+                }
+                else if(l2 == null)
+                {
+                    temp.next = l1;
+                    break;
+                }
+                else
+                {
+                    if(l1.val <= l2.val)
+                    {
+                        temp.next = new ListNode(l1.val);
+                        temp = temp.next;
+                        l1 = l1.next;
+                    }
+                    else
+                    {
+                        temp.next = new ListNode(l2.val);
+                        temp = temp.next;
+                        l2 = l2.next;
+                    }
+                }
+            }
+            while (l1 != null || l2 != null);
+
+            return result;
+        }        
+    }
+
+    public class ListNode
+    {
+        public int val;
+
+        public ListNode next;
+
+        public ListNode(int x) { val = x; }
     }
 }

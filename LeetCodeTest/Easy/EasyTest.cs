@@ -7,7 +7,7 @@ namespace LeetCodeTest
 {
     [TestClass]
     public class EasyTest
-    {       
+    {
 
         [TestMethod]
         public void TwoSum()
@@ -53,7 +53,7 @@ namespace LeetCodeTest
             //arrange
             var x = 10;
             var expected = false;
-            var target = new Easy();         
+            var target = new Easy();
 
             //Act
             bool actual = target.IsPalindrome(x);
@@ -77,6 +77,61 @@ namespace LeetCodeTest
             //assert
 
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void MergeTwoSortedLists()
+        {
+            //arrange
+            var target = new Easy();
+            var l1 = new ListNode(-2)
+            {
+                next = new ListNode(5)
+                {
+                    // next = new ListNode(5)
+                }
+            };
+
+            var l2 = new ListNode(-9)
+            {
+                next = new ListNode(-6)
+                {
+                    next = new ListNode(-3)
+                    {
+                        next = new ListNode(-1)
+                        {
+                            next = new ListNode(1)
+                            {
+                                next = new ListNode(6)
+                            }
+                        }
+                    }
+                }
+            };
+
+            var expected = new ListNode(1)
+            {
+                next = new ListNode(2)
+                {
+                    next = new ListNode(3)
+                    {
+                        next = new ListNode(4)
+                        {
+                            next = new ListNode(5)
+                            {
+                                next = new ListNode(8)
+                            }
+                        }
+                    }
+                }
+            };
+
+            //act
+            ListNode actual = target.MergeTwoSortedLists(l1, l2);
+
+            //assert
+            Assert.Fail();
+
         }
     }
 }
