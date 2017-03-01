@@ -117,7 +117,26 @@ namespace LeetCode.Easy
         }
 
         public ListNode MergeTwoSortedLists(ListNode l1, ListNode l2)
-        {            
+        {
+            if (l1 == null)
+                return l2;
+
+            if (l2 == null)
+                return l1;
+
+            if(l1.val <= l2.val)
+            {
+                var x = MergeTwoSortedLists(l1.next, l2); 
+                l1.next = x;
+                return l1;
+            }
+            else
+            {
+                var x = MergeTwoSortedLists(l1, l2.next);
+                l2.next = x;
+                return l2;
+            }
+
             ListNode result = null;
             ListNode temp = null;
 
