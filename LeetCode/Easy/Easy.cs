@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LeetCode.Definition;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -124,9 +125,9 @@ namespace LeetCode.Easy
             if (l2 == null)
                 return l1;
 
-            if(l1.val <= l2.val)
+            if (l1.val <= l2.val)
             {
-                var x = MergeTwoSortedLists(l1.next, l2); 
+                var x = MergeTwoSortedLists(l1.next, l2);
                 l1.next = x;
                 return l1;
             }
@@ -137,68 +138,81 @@ namespace LeetCode.Easy
                 return l2;
             }
 
-            ListNode result = null;
-            ListNode temp = null;
+            //ListNode result = null;
+            //ListNode temp = null;
 
-            if (l1 == null && l2 == null)
-                return null;
-            else if (l1 == null)
-                return l2;
-            else if (l2 == null)
-                return l1;
-            else if(l1.val <= l2.val)
-            {
-                result = new ListNode(l1.val);
-                temp = result;
-                l1 = l1.next;
-            }
-            else
-            {
-                result = new ListNode(l2.val);
-                temp = result;
-                l2 = l2.next;
-            }
+            //if (l1 == null && l2 == null)
+            //    return null;
+            //else if (l1 == null)
+            //    return l2;
+            //else if (l2 == null)
+            //    return l1;
+            //else if(l1.val <= l2.val)
+            //{
+            //    result = new ListNode(l1.val);
+            //    temp = result;
+            //    l1 = l1.next;
+            //}
+            //else
+            //{
+            //    result = new ListNode(l2.val);
+            //    temp = result;
+            //    l2 = l2.next;
+            //}
 
-            do
+            //do
+            //{
+            //    if(l1==null)
+            //    {
+            //        temp.next = l2;
+            //        break;
+            //    }
+            //    else if(l2 == null)
+            //    {
+            //        temp.next = l1;
+            //        break;
+            //    }
+            //    else
+            //    {
+            //        if(l1.val <= l2.val)
+            //        {
+            //            temp.next = new ListNode(l1.val);
+            //            temp = temp.next;
+            //            l1 = l1.next;
+            //        }
+            //        else
+            //        {
+            //            temp.next = new ListNode(l2.val);
+            //            temp = temp.next;
+            //            l2 = l2.next;
+            //        }
+            //    }
+            //}
+            //while (l1 != null || l2 != null);
+
+            //return result;
+        }
+
+        public int StrStr(string haystack, string needle)
+        {
+            for (int i = 0; ; i++)
             {
-                if(l1==null)
+                for (int j = 0; ; j++)
                 {
-                    temp.next = l2;
-                    break;
-                }
-                else if(l2 == null)
-                {
-                    temp.next = l1;
-                    break;
-                }
-                else
-                {
-                    if(l1.val <= l2.val)
-                    {
-                        temp.next = new ListNode(l1.val);
-                        temp = temp.next;
-                        l1 = l1.next;
-                    }
-                    else
-                    {
-                        temp.next = new ListNode(l2.val);
-                        temp = temp.next;
-                        l2 = l2.next;
-                    }
+                    if (j == needle.Length) return i;
+                    if (i + j == haystack.Length) return -1;
+                    if (needle[j] != haystack[i + j]) break;
                 }
             }
-            while (l1 != null || l2 != null);
-
-            return result;
-        }        
+        }
     }
 
-    public class ListNode
-    {
-        public int val;
+    //public class ListNode
+    //{
+    //    public int val;
 
-        public ListNode next;
+    //    public ListNode next;
 
-        public ListNode(int x) { val = x; }
-    }
+    //    public ListNode(int x) { val = x; }
+    //}
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LeetCode.Hard;
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LeetCode.Medium;
 using LeetCode.Definition;
@@ -9,6 +10,92 @@ namespace LeetCodeTest
     [TestClass]
     public class HardTest
     {
+        [TestMethod()]
+        public void ReverseKGroupTest()
+        {
+            int group = 3;
+            var node = new ListNode(5)
+            {
+                next = new ListNode(6)
+                {
+                    next = new ListNode(7)
+                    {
+                        next = new ListNode(8)
+                        {
+                            next = new ListNode(9)
+                            {
+                            }
+                        }
+                    }
+                }
+            };
+
+            var expected = new ListNode(7)
+            {
+                next = new ListNode(6)
+                {
+                    next = new ListNode(5)
+                    {
+                        next = new ListNode(8)
+                        {
+                            next = new ListNode(9)
+                            {
+                            }
+                        }
+                    }
+                }
+            };
+
+            var target = new Hard();
+            var actual = target.ReverseKGroup(node, group);
+
+            expected.ToExpectedObject().ShouldEqual(actual);
+
+        }
+
+        [TestMethod()]
+        public void Switch()
+        {
+            var node =
+                new ListNode(5)
+                {
+                    next = new ListNode(6)
+                    {
+                        next = new ListNode(7)
+                        {
+                            //Next = new ListNode(8)
+                            //{
+                            //    Next = new ListNode(9)
+                            //    {
+                            //    }
+                            //}
+                        }
+                    }
+                };
+
+            var expected =
+                new ListNode(7)
+                {
+                    next = new ListNode(6)
+                    {
+                        next = new ListNode(5)
+                        {
+                            //Next = new ListNode(6)
+                            //{
+                            //    Next = new ListNode(5)
+                            //    {
+                            //    }
+                            //}
+                        }
+                    }
+                };
+
+            var target = new Hard();
+            var actual = target.Switch(node);
+
+            expected.ToExpectedObject().ShouldEqual(actual);
+        }
+
         [TestMethod]
         public void AddTwoNumbers()
         {
@@ -33,7 +120,7 @@ namespace LeetCodeTest
             var target = new Hard();
 
             //act
-            int actual = target.FindMinStep(board,hand);
+            int actual = target.FindMinStep(board, hand);
 
             //assert
             Assert.AreEqual(expected, actual);

@@ -2,6 +2,8 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LeetCode;
 using LeetCode.Easy;
+using ExpectedObjects;
+using LeetCode.Definition;
 
 namespace LeetCodeTest
 {
@@ -109,17 +111,23 @@ namespace LeetCodeTest
                 }
             };
 
-            var expected = new ListNode(1)
+            var expected = new ListNode(-9)
             {
-                next = new ListNode(2)
+                next = new ListNode(-6)
                 {
-                    next = new ListNode(3)
+                    next = new ListNode(-3)
                     {
-                        next = new ListNode(4)
+                        next = new ListNode(-2)
                         {
-                            next = new ListNode(5)
+                            next = new ListNode(-1)
                             {
-                                next = new ListNode(8)
+                                next = new ListNode(1)
+                                {
+                                    next = new ListNode(5)
+                                    {
+                                        next = new ListNode(6)
+                                    }
+                                }
                             }
                         }
                     }
@@ -130,7 +138,7 @@ namespace LeetCodeTest
             ListNode actual = target.MergeTwoSortedLists(l1, l2);
 
             //assert
-            Assert.Fail();
+            expected.ToExpectedObject().ShouldEqual(actual);
 
         }
     }

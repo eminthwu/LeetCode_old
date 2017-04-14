@@ -95,7 +95,7 @@ namespace LeetCode.Medium
                 var even = t(s, begin, end + 1);
 
                 var max = odd.Length > even.Length ? odd : even;
-                result = result.Length >= max.Length ? result : max;                
+                result = result.Length >= max.Length ? result : max;
 
                 begin = end = ++i;
             }
@@ -125,6 +125,90 @@ namespace LeetCode.Medium
             }
 
             return result;
+        }
+
+        public int Divide(int dividend, int divisor)
+        {
+            if (dividend >= 0 && divisor > 0)
+            {
+                if (divisor > dividend)
+                {
+                    return 0;
+                }
+
+                var answer = 0;
+
+                while (dividend >= divisor)
+                {
+                    dividend = dividend - divisor;
+                    answer++;
+                }
+
+                return answer;
+            }
+            else if (dividend <= 0 && divisor > 0)
+            {
+                if ((dividend + divisor) > 0)
+                {
+                    return 0;
+                }
+
+                var answer = 0;
+
+                while (dividend <= 0)
+                {
+                    dividend = dividend + divisor;
+                    answer--;
+                }
+
+                answer = dividend > 0 ? answer + 1 : answer;
+
+                return answer;
+            }
+            else if (dividend >= 0 && divisor < 0)
+            {
+                if ((dividend + divisor) < 0)
+                {
+                    return 0;
+                }
+
+                var answer = 0;
+
+                while (dividend >= 0)
+                {
+                    dividend = dividend + divisor;
+                    answer--;
+                }
+
+                answer = dividend < 0 ? answer + 1 : answer;
+
+                return answer;
+            }
+            else if (dividend <= 0 && divisor < 0)
+            {
+                var a = dividend - dividend;
+                dividend = a - dividend;
+                var b = divisor - divisor;
+                divisor = b - divisor;
+
+                if (divisor > dividend)
+                {
+                    return 0;
+                }
+
+                var answer = 0;
+
+                while (dividend >= divisor)
+                {
+                    dividend = dividend - divisor;
+                    answer++;
+                }
+
+                return answer;
+            }
+
+            return 0;
+
         }
 
     }
