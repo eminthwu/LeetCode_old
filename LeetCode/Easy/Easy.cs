@@ -208,12 +208,9 @@ namespace LeetCode.Easy
 
         public int SearchInsert(int[] nums, int target)
         {
-            var index = 0;
-
             if (target > nums[nums.Length - 1])
             {
-                index = nums.Length;
-                return index;
+                return nums.Length;
             }
             else if (target <= nums[0])
             {
@@ -225,7 +222,6 @@ namespace LeetCode.Easy
                 var num = nums[i];
                 if (target > num)
                 {
-                    index = i;
                     return i + 1;
                 }
                 else if (target == num)
