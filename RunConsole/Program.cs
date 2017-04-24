@@ -10,7 +10,10 @@ namespace RunConsole
         static void Main(string[] args)
         {
             LeetCode.Medium.Medium m = new LeetCode.Medium.Medium();
-            m.Divide(-2147483648, -1);
+            LeetCode.Easy.Easy e = new LeetCode.Easy.Easy();
+            //m.Divide(-2147483648, -1);
+
+            var index = e.SearchInsert(new int[] { 1, 3,5,6 }, 2);
         }
     }
 }
