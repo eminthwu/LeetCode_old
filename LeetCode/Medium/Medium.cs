@@ -211,6 +211,31 @@ namespace LeetCode.Medium
 
         }
 
+        public int[] SearchRange(int[] nums, int target)
+        {
+            int begin = -1, end = -1;
+
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (nums[i] == target)
+                {
+                    begin = i;
+                    break;
+                }
+            }
+
+            for (int i = nums.Length - 1; i >= 0; i--)
+            {
+                if (nums[i] == target)
+                {
+                    end = i;
+                    break;
+                }
+            }
+
+            return new int[] { begin, end };
+        }
+
     }
 }
 
